@@ -6,8 +6,6 @@ import org.apache.log4j.Logger;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
@@ -19,7 +17,6 @@ import java.nio.file.Paths;
 import java.util.Set;
 
 import static com.service.PersonService.initList;
-import static com.service.PersonService.printAll;
 
 @SpringBootApplication
 public class App implements CommandLineRunner {
@@ -36,6 +33,7 @@ public class App implements CommandLineRunner {
         PersonConverter converter = new PersonConverter();
         initList(converter.convert(json));
         Person person = new Person("3", "Wowa", "20");
+
 
         ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
         Validator validator = validatorFactory.getValidator();
